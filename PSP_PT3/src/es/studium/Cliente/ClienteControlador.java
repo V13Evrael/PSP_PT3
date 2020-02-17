@@ -9,8 +9,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import javax.swing.JOptionPane;
-
 public class ClienteControlador implements ActionListener, WindowListener {
 
 	Socket socket;

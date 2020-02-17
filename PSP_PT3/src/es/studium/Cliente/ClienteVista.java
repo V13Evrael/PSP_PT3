@@ -68,11 +68,16 @@ public class ClienteVista extends JFrame {
 
 	public ClienteVista() {
 
+		try {
 		do {
 			nombreCliente = JOptionPane.showInputDialog(this,
 					"Escribe tu nombre para conectar con la base de datos (No puede ser vacío).", "Elegir nombre",
 					JOptionPane.INFORMATION_MESSAGE);
 		} while (nombreCliente.equals(""));
+		}
+		catch (NullPointerException npe) {
+			System.exit(0);
+		}
 
 		setTitle("Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

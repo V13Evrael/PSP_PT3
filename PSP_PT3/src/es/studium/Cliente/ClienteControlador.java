@@ -57,23 +57,6 @@ public class ClienteControlador implements ActionListener, WindowListener {
 
 	}
 
-	public static void main(String[] args) throws Exception {
-		int puerto = 44444;
-		Socket socket = null;
-		try {
-			socket = new Socket("127.0.0.1", puerto);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Imposible conectar con el servidor \n" + ex.getMessage(),
-					"<<Mensaje de Error:1>>", JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
-		}
-
-		ClienteControlador cliente = new ClienteControlador(socket);
-		cliente.ejecutar();
-
-	}
-
 	// Cuando se pulsa el botón Enviar,
 	// el mensaje introducido se envía al servidor por el flujo de salida
 	public void actionPerformed(ActionEvent e) {
@@ -88,30 +71,6 @@ public class ClienteControlador implements ActionListener, WindowListener {
 		}
 	}
 
-	// Dentro del método ejecutar(), el cliente lee lo que el
-	// hilo le manda (mensajes del Chat) y lo muestra en el textarea.
-	// Esto se ejecuta en un bucle del que solo se sale
-	// en el momento que el cliente pulse el botón Salir
-	// y se modifique la variable repetir
-	public void ejecutar() {
-		String texto = "";
-		while (repetir) {
-			try {
-				texto = fentrada.readUTF();
-				cv.getTxtATextoRecibido().setText(texto);
-			} catch (IOException ex) {
-				JOptionPane.showMessageDialog(null, "Imposible conectar con el servidor \n" + ex.getMessage(),
-						"<<Mensaje de Error:2>>", JOptionPane.ERROR_MESSAGE);
-				repetir = false;
-			}
-		}
-		try {
-			socket.close();
-			System.exit(0);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-	}
 
 	@Override
 	public void windowOpened(WindowEvent e) {

@@ -11,11 +11,11 @@ import java.net.Socket;
 
 public class ClienteControlador implements ActionListener, WindowListener {
 
-	Socket socket;
-	DataInputStream fentrada;
-	DataOutputStream fsalida;
-	boolean repetir = true;
-	ClienteVista cv;
+	public Socket socket;
+	public DataInputStream fentrada;
+	public DataOutputStream fsalida;
+	public boolean repetir = true;
+	public ClienteVista cv;
 
 	public ClienteControlador(Socket socket) {
 
@@ -25,6 +25,7 @@ public class ClienteControlador implements ActionListener, WindowListener {
 		// Si tiene éxito el HiloServidor recibirá el mensaje con el nombre del cliente
 		cv = new ClienteVista();
 		cv.addWindowListener(this);
+		cv.getBtnEnviar().addActionListener(this);
 		this.socket = socket;
 
 		// Se crean los flujos de entrada y salida.

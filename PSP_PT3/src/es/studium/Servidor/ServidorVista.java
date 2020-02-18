@@ -74,4 +74,36 @@ public class ServidorVista extends JFrame {
 		
 	}
 
+	public static Color getGreensession() {
+		return greenSession;
+	}
+
+	public static Color getYellowsession() {
+		return yellowSession;
+	}
+
+	public static Color getRedsession() {
+		return redSession;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public String getFraseSes() {
+		return fraseSes;
+	}
+
+	public int getNumSes() {
+		return numSes;
+	}
+
+	public JButton getBtnSalir() {
+		return btnSalir;
+	}
+
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
 }
